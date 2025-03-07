@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7dp7dx11ldnh"]
+
+[ext_resource type="PackedScene" uid="uid://ded16bqotk8os" path="res://levels/AutoLayer.scn" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://psmgo2eottoq" path="res://2d_lights_and_shadows_neutral_point_light.webp" id="2_0xm2m"]
+
+[node name="Main" type="Node2D"]
+
+[node name="AutoLayer" parent="." instance=ExtResource("1_ig7tw")]
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="PointLight2D" type="PointLight2D" parent="Node2D"]
+position = Vector2(197, 138)
+scale = Vector2(0.615234, 0.615234)
+shadow_enabled = true
+texture = ExtResource("2_0xm2m")

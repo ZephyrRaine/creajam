@@ -44,7 +44,7 @@ maxSpeed = 100.0
 timeToReachMaxSpeed = 0.1
 timeToReachZeroSpeed = 0.1
 jumpHeight = 1.0
-jumps = 2
+wallJump = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("CircleShape2D_272bh")

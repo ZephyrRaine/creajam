@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/worldmap.ldtk-811e4c2128539b65929641d61eda1be
 [params]
 
 World=""
-group_world_layers=false
+group_world_layers=true
 Level=""
 pack_levels=true
 Layer=""
@@ -29,7 +29,7 @@ resolve_entityrefs=true
 use_entity_placeholders=false
 Post Import=""
 tileset_post_import=""
-entities_post_import=""
+entities_post_import="uid://bxk3dbo4ovbio"
 level_post_import=""
 world_post_import=""
 Debug=""

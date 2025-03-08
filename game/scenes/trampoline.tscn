@@ -1,0 +1,73 @@
+[gd_scene load_steps=10 format=3 uid="uid://crhc1ny17a1dq"]
+
+[ext_resource type="Texture2D" uid="uid://bqduwtnrs4sb5" path="res://sprites/trampoline-Sheet.png" id="1_2yctu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nytqh"]
+atlas = ExtResource("1_2yctu")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ne3y"]
+atlas = ExtResource("1_2yctu")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5gay0"]
+atlas = ExtResource("1_2yctu")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_64cc3"]
+atlas = ExtResource("1_2yctu")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oqe70"]
+atlas = ExtResource("1_2yctu")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_62mwn"]
+atlas = ExtResource("1_2yctu")
+region = Rect2(32, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_so26s"]
+atlas = ExtResource("1_2yctu")
+region = Rect2(40, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ys5mn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nytqh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ne3y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5gay0")
+}],
+"loop": false,
+"name": &"press",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_64cc3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oqe70")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_62mwn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_so26s")
+}],
+"loop": false,
+"name": &"release",
+"speed": 5.0
+}]
+
+[node name="AnimatedSprite2D_trampoline" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_ys5mn")
+animation = &"release"
+autoplay = "press"
+frame = 3
+frame_progress = 1.0
+speed_scale = 2.0

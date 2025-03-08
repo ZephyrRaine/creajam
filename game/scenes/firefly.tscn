@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://coccfr2vpel1g"]
 
-[ext_resource type="Script" uid="uid://bo740jk1rn7kq" path="res://scenes/entityR.gd" id="1_oqngd"]
+[ext_resource type="Script" uid="uid://bo740jk1rn7kq" path="res://scenes/firefly.gd" id="1_oqngd"]
 [ext_resource type="Texture2D" uid="uid://psmgo2eottoq" path="res://2d_lights_and_shadows_neutral_point_light.webp" id="2_fjwvr"]
 [ext_resource type="Texture2D" uid="uid://dbickl5j0icel" path="res://sprites/Firefly-Sheet.png" id="2_rwtl0"]
 
@@ -45,8 +45,6 @@ script = ExtResource("1_oqngd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1d45q")
-autoplay = "default"
-frame_progress = 0.37945
 speed_scale = 2.0
 
 [node name="PointLight2D" type="PointLight2D" parent="."]

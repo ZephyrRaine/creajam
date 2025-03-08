@@ -11,9 +11,7 @@ func _process(delta: float) -> void:
 	position.x = tileX*width + width * 0.5 
 	if(tileX == 0 && character.position.x < 0):
 		tileX -= 1
-	print(tileX)
 	var tileY = (int(character.position.y) / height)
 	if(tileY == 0 && character.position.y < 0):
 		tileY -= 1
 	position.y = tileY*height + height * 0.5
-	print(tileY)

@@ -59,15 +59,7 @@ class_name PlatformerController2D
 @export var wallLatching: bool = false
 ##wall latching must be enabled for this to work. #If enabled, the player must hold down the "latch" key to wall latch. Assign "latch" in the project input settings. The player's input will be ignored when latching.
 @export var wallLatchingModifer: bool = false
-@export_category("Dashing")
-##The type of dashes the player can do.
-@export_enum("None", "Horizontal", "Vertical", "Four Way", "Eight Way") var dashType: int
-##How many dashes your player can do before needing to hit the ground.
-@export_range(0, 10) var dashes: int = 1
-##If enabled, pressing the opposite direction of a dash, during a dash, will zero the player's velocity.
-@export var dashCancel: bool = true
-##How far the player will dash. One of the dashing toggles must be on for this to be used.
-@export_range(1.5, 4) var dashLength: float = 2.5
+
 @export_category("Corner Cutting/Jump Correct")
 ##If the player's head is blocked by a jump but only by a little, the player will be nudged in the right direction and their jump will execute as intended. NEEDS RAYCASTS TO BE ATTACHED TO THE PLAYER NODE. AND ASSIGNED TO MOUNTING RAYCAST. DISTANCE OF MOUNTING DETERMINED BY PLACEMENT OF RAYCAST.
 @export var cornerCutting: bool = false
@@ -113,7 +105,6 @@ class_name PlatformerController2D
 @export var crouch_walk: bool
 ##Animations must be named "roll" all lowercase as the check box says
 @export var roll: bool
-
 
 
 #Variables determined by the developer set ones.
@@ -179,7 +170,11 @@ var rollTap
 var downTap
 var twirlTap
 
+var _tilesRef : TileMapLayer
+var previous_floor_position : Vector2
+
 func _ready():
+	_tilesRef = $"../World_Level_0/GridColinFlo"
 	wasMovingR = true
 	anim = PlayerSprite
 	col = PlayerCollider
@@ -192,9 +187,6 @@ func _updateData():
 	
 	jumpMagnitude = (10.0 * jumpHeight) * gravityScale
 	jumpCount = jumps
-	
-	dashMagnitude = maxSpeed * dashLength
-	dashCount = dashes
 	
 	maxSpeedLock = maxSpeed
 	
@@ -230,23 +222,6 @@ func _updateData():
 	if directionalSnap:
 		instantAccel = true
 		instantStop = true
-	
-	
-	twoWayDashHorizontal = false
-	twoWayDashVertical = false
-	eightWayDash = false
-	if dashType == 0:
-		pass
-	if dashType == 1:
-		twoWayDashHorizontal = true
-	elif dashType == 2:
-		twoWayDashVertical = true
-	elif dashType == 3:
-		twoWayDashHorizontal = true
-		twoWayDashVertical = true
-	elif dashType == 4:
-		eightWayDash = true
-	
 	
 
 func _process(_delta):
@@ -318,9 +293,23 @@ func _process(_delta):
 		if rollTap and canRoll and roll:
 			anim.speed_scale = 1
 			anim.play("roll")
-		
-		
-		
+	
+	#INFO tilemap interactions
+	if _tilesRef != null: 
+		var tile_pos = _tilesRef.local_to_map(_tilesRef.to_local(transform.get_origin())) 
+		var tile_data = _tilesRef.get_cell_tile_data(tile_pos)
+		if(tile_data):
+			var isDeath = tile_data.get_custom_data("death")
+			if(isDeath):
+				position = previous_floor_position
+			
+	if(is_on_floor()):
+		var local_to_map = _tilesRef.local_to_map(_tilesRef.to_local(transform.get_origin()))
+		if(velocity.x > 0.1):
+			local_to_map.x -= 1
+		else:
+			local_to_map.x += 1
+		previous_floor_position = _tilesRef.to_global(_tilesRef.map_to_local(local_to_map)) 
 
 func _physics_process(delta):
 	if !dset:
@@ -508,63 +497,6 @@ func _physics_process(delta):
 			_wallJump()
 			
 			
-	#INFO dashing
-	if is_on_floor():
-		dashCount = dashes
-	if eightWayDash and dashTap and dashCount > 0 and !rolling:
-		var input_direction = Input.get_vector("left", "right", "up", "down")
-		var dTime = 0.0625 * dashLength
-		_dashingTime(dTime)
-		_pauseGravity(dTime)
-		velocity = dashMagnitude * input_direction
-		dashCount += -1
-		movementInputMonitoring = Vector2(false, false)
-		_inputPauseReset(dTime)
-	
-	if twoWayDashVertical and dashTap and dashCount > 0 and !rolling:
-		var dTime = 0.0625 * dashLength
-		if upHold and downHold:
-			_placeHolder()
-		elif upHold:
-			_dashingTime(dTime)
-			_pauseGravity(dTime)
-			velocity.x = 0
-			velocity.y = -dashMagnitude
-			dashCount += -1
-			movementInputMonitoring = Vector2(false, false)
-			_inputPauseReset(dTime)
-		elif downHold and dashCount > 0:
-			_dashingTime(dTime)
-			_pauseGravity(dTime)
-			velocity.x = 0
-			velocity.y = dashMagnitude
-			dashCount += -1
-			movementInputMonitoring = Vector2(false, false)
-			_inputPauseReset(dTime)
-	
-	if twoWayDashHorizontal and dashTap and dashCount > 0 and !rolling:
-		var dTime = 0.0625 * dashLength
-		if wasPressingR and !(upHold or downHold):
-			velocity.y = 0
-			velocity.x = dashMagnitude
-			_pauseGravity(dTime)
-			_dashingTime(dTime)
-			dashCount += -1
-			movementInputMonitoring = Vector2(false, false)
-			_inputPauseReset(dTime)
-		elif !(upHold or downHold):
-			velocity.y = 0
-			velocity.x = -dashMagnitude
-			_pauseGravity(dTime)
-			_dashingTime(dTime)
-			dashCount += -1
-			movementInputMonitoring = Vector2(false, false)
-			_inputPauseReset(dTime)
-			
-	if dashing and velocity.x > 0 and leftTap and dashCancel:
-		velocity.x = 0
-	if dashing and velocity.x < 0 and rightTap and dashCancel:
-		velocity.x = 0
 	
 	#INFO Corner Cutting
 	if cornerCutting:

@@ -1,13 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://c7dp7dx11ldnh"]
+[gd_scene load_steps=7 format=3 uid="uid://c7dp7dx11ldnh"]
 
-[ext_resource type="PackedScene" uid="uid://ded16bqotk8os" path="res://levels/AutoLayer.scn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://dcg2cy01iequ3" path="res://levels/World_Level_0.scn" id="1_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://psmgo2eottoq" path="res://2d_lights_and_shadows_neutral_point_light.webp" id="2_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://vaoy0o1o12bc" path="res://levels/World_Level_1.scn" id="3_h2yge"]
-[ext_resource type="Script" path="res://UltimatePlatformerController.gd" id="4_lquwl"]
+[ext_resource type="Script" uid="uid://c1rp5fi5pvthf" path="res://UltimatePlatformerController.gd" id="4_lquwl"]
 [ext_resource type="Texture2D" uid="uid://cpfmhk2hmnuwv" path="res://sprites/player.png" id="5_7mycd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_272bh"]
-radius = 4.0
+radius = 3.9
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5vw27"]
 animations = [{
@@ -22,7 +21,7 @@ animations = [{
 
 [node name="Main" type="Node2D"]
 
-[node name="AutoLayer" parent="." instance=ExtResource("1_ig7tw")]
+[node name="World_Level_0" parent="." instance=ExtResource("1_1bvp3")]
 
 [node name="Node2D" type="Node2D" parent="."]
 
@@ -32,18 +31,17 @@ scale = Vector2(0.615234, 0.615234)
 shadow_enabled = true
 texture = ExtResource("2_0xm2m")
 
-[node name="World_Level_1" parent="." instance=ExtResource("3_h2yge")]
-position = Vector2(256, -256)
-
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." node_paths=PackedStringArray("PlayerSprite", "PlayerCollider")]
-position = Vector2(56, 48)
+position = Vector2(151, 75)
 script = ExtResource("4_lquwl")
 PlayerSprite = NodePath("AnimatedSprite2D")
 PlayerCollider = NodePath("CollisionShape2D")
 maxSpeed = 100.0
 timeToReachMaxSpeed = 0.1
 timeToReachZeroSpeed = 0.1
-jumpHeight = 1.0
+jumpHeight = 1.8
+jumps = 2
+gravityScale = 10.0
 wallJump = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
@@ -51,3 +49,9 @@ shape = SubResource("CircleShape2D_272bh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 sprite_frames = SubResource("SpriteFrames_5vw27")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(159.82, 91.89)
+zoom = Vector2(6, 6)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0

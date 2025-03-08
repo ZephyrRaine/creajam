@@ -1,6 +1,10 @@
-[gd_resource type="SpriteFrames" load_steps=11 format=3 uid="uid://drnflj36dm6sd"]
+[gd_resource type="SpriteFrames" load_steps=12 format=3 uid="uid://drnflj36dm6sd"]
 
 [ext_resource type="Texture2D" uid="uid://dvekdb8f5oelq" path="res://sprites/player-Sheet.png" id="1_ghsaa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ghsaa"]
+atlas = ExtResource("1_ghsaa")
+region = Rect2(0, 24, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g2els"]
 atlas = ExtResource("1_ghsaa")
@@ -40,6 +44,14 @@ region = Rect2(8, 8, 8, 8)
 
 [resource]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ghsaa")
+}],
+"loop": true,
+"name": &"falling",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 10.0,
 "texture": SubResource("AtlasTexture_g2els")

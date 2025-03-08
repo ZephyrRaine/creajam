@@ -45,6 +45,7 @@ script = ExtResource("1_oqngd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1d45q")
+autoplay = "default"
 speed_scale = 2.0
 
 [node name="PointLight2D" type="PointLight2D" parent="."]

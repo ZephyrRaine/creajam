@@ -1,10 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://bd2qd1kmakk2"]
+[gd_scene load_steps=9 format=3 uid="uid://bgx2osy2fuqec"]
 
 [ext_resource type="Texture2D" uid="uid://ynouyo76ofdx" path="res://sprites/net-Sheet.png" id="1_es2g2"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_es2g2"]
-atlas = ExtResource("1_es2g2")
-region = Rect2(0, 0, 11, 10)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i41qj"]
 atlas = ExtResource("1_es2g2")
@@ -26,13 +22,14 @@ region = Rect2(44, 0, 11, 10)
 atlas = ExtResource("1_es2g2")
 region = Rect2(55, 0, 11, 10)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_es2g2"]
+atlas = ExtResource("1_es2g2")
+region = Rect2(0, 0, 11, 10)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_yaehf"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_es2g2")
-}, {
-"duration": 1.0,
+"duration": 0.25,
 "texture": SubResource("AtlasTexture_i41qj")
 }, {
 "duration": 1.0,
@@ -46,13 +43,16 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_48t4q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_es2g2")
 }],
-"loop": true,
-"name": &"default",
+"loop": false,
+"name": &"use",
 "speed": 5.0
 }]
 
 [node name="AnimatedSprite2D_net" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_yaehf")
-frame_progress = 0.380531
+animation = &"use"
 speed_scale = 1.5

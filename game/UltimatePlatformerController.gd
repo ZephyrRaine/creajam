@@ -13,6 +13,8 @@ class_name PlatformerController2D
 @export var PlayerSprite: AnimatedSprite2D
 @export var PlayerCollider: CollisionShape2D
 
+var utils = preload("res://scripts/utils.gd")
+
 #INFO HORIZONTAL MOVEMENT 
 @export_category("L/R Movement")
 ##The max speed your player will move
@@ -170,11 +172,11 @@ var rollTap
 var downTap
 var twirlTap
 
-var _tilesRef : TileMapLayer
+var _tilesRef : LDTKWorld
 var previous_floor_position : Vector2
 
 func _ready():
-	_tilesRef = $"../World_Level_0/GridColinFlo"
+	_tilesRef = $"../LDTKWorld"
 	wasMovingR = true
 	anim = PlayerSprite
 	col = PlayerCollider
@@ -236,8 +238,11 @@ func _process(_delta):
 
 	if rightHold and !latched:
 		anim.scale.x = animScaleLock.x
+		$Objects.scale.x = anim.scale.x
 	if leftHold and !latched:
 		anim.scale.x = animScaleLock.x * -1
+		$Objects.scale.x = anim.scale.x
+		
 	
 	#run
 	if run and idle and !dashing and !crouching:
@@ -296,20 +301,22 @@ func _process(_delta):
 	
 	#INFO tilemap interactions
 	if _tilesRef != null: 
-		var tile_pos = _tilesRef.local_to_map(_tilesRef.to_local(transform.get_origin())) 
-		var tile_data = _tilesRef.get_cell_tile_data(tile_pos)
-		if(tile_data):
-			var isDeath = tile_data.get_custom_data("death")
-			if(isDeath):
-				position = previous_floor_position
+		var tile_map = utils.getTileMap(_tilesRef.get_children(), transform.get_origin())
+		if(tile_map):
+			var tile_pos = tile_map.local_to_map(tile_map.to_local(transform.get_origin())) 
+			var tile_data = tile_map.get_cell_tile_data(tile_pos)
+			if(tile_data):
+				var isDeath = tile_data.get_custom_data("death")
+				if(isDeath):
+					position = previous_floor_position
 			
 	if(is_on_floor()):
-		var local_to_map = _tilesRef.local_to_map(_tilesRef.to_local(transform.get_origin()))
+		var currentTile = Vector2i(int(transform.get_origin().x)/8, int(transform.get_origin().y)/8)
 		if(velocity.x > 0.1):
-			local_to_map.x -= 1
+			currentTile.x -= 1
 		else:
-			local_to_map.x += 1
-		previous_floor_position = _tilesRef.to_global(_tilesRef.map_to_local(local_to_map)) 
+			currentTile.x += 1
+		previous_floor_position = Vector2(currentTile.x * 8.0, currentTile.y * 8.0) 
 
 func _physics_process(delta):
 	if !dset:

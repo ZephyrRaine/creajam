@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://c7dp7dx11ldnh"]
+[gd_scene load_steps=16 format=3 uid="uid://c7dp7dx11ldnh"]
 
 [ext_resource type="PackedScene" uid="uid://dcg2cy01iequ3" path="res://levels/World_Level_0.scn" id="1_1bvp3"]
+[ext_resource type="Script" uid="uid://b2hydfoglxu74" path="res://addons/ldtk-importer/src/components/ldtk-world.gd" id="1_kek77"]
 [ext_resource type="PackedScene" uid="uid://cq1scmn7e6w1r" path="res://levels/World_Level_1.scn" id="3_lquwl"]
 [ext_resource type="Script" uid="uid://bfgql8ewvmi1f" path="res://scripts/camera_follow.gd" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://v1k0ryhnceve" path="res://levels/World_Level_2.scn" id="7_272bh"]
@@ -8,6 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://8wbtc8ax60ev" path="res://scenes/player.tscn" id="8_kek77"]
 [ext_resource type="Script" uid="uid://cqavpo8qyep85" path="res://autoenable.gd" id="9_4c57u"]
 [ext_resource type="Shader" uid="uid://b2w5gup6a6mqb" path="res://crt.gdshader" id="9_kek77"]
+[ext_resource type="PackedScene" uid="uid://dhkrs1s8534gv" path="res://levels/World_Level_3.scn" id="10_4c57u"]
+[ext_resource type="PackedScene" uid="uid://deuwg4ko68ba1" path="res://levels/World_Level_4.scn" id="11_w48qg"]
+[ext_resource type="PackedScene" uid="uid://c0s4oleqq8lmc" path="res://levels/World_Level_5.scn" id="12_vivmo"]
+[ext_resource type="PackedScene" uid="uid://doqi4hrvgjr56" path="res://levels/World_Level_6.scn" id="13_2cqfq"]
+[ext_resource type="PackedScene" uid="uid://dpovyohnobfg6" path="res://levels/World_Level_7.scn" id="14_yaehf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4c57u"]
 shader = ExtResource("9_kek77")
@@ -35,13 +41,33 @@ shader_parameter/vignette_opacity = 0.6
 
 [node name="Main" type="Node2D"]
 
-[node name="World_Level_0" parent="." instance=ExtResource("1_1bvp3")]
+[node name="LDTKWorld" type="Node2D" parent="." node_paths=PackedStringArray("levels")]
+script = ExtResource("1_kek77")
+levels = [NodePath("World_Level_0"), null, null, null, NodePath("World_Level_1"), NodePath("World_Level_2"), NodePath("World_Level_3"), NodePath("World_Level_4"), NodePath("World_Level_5"), NodePath("World_Level_6"), NodePath("World_Level_7")]
+metadata/_custom_type_script = "uid://b2hydfoglxu74"
 
-[node name="World_Level_1" parent="." instance=ExtResource("3_lquwl")]
+[node name="World_Level_0" parent="LDTKWorld" instance=ExtResource("1_1bvp3")]
+
+[node name="World_Level_1" parent="LDTKWorld" instance=ExtResource("3_lquwl")]
 position = Vector2(320, 0)
 
-[node name="World_Level_2" parent="." instance=ExtResource("7_272bh")]
-position = Vector2(320, -181)
+[node name="World_Level_2" parent="LDTKWorld" instance=ExtResource("7_272bh")]
+position = Vector2(320, -177)
+
+[node name="World_Level_3" parent="LDTKWorld" instance=ExtResource("10_4c57u")]
+position = Vector2(640, 0)
+
+[node name="World_Level_4" parent="LDTKWorld" instance=ExtResource("11_w48qg")]
+position = Vector2(640, -177)
+
+[node name="World_Level_5" parent="LDTKWorld" instance=ExtResource("12_vivmo")]
+position = Vector2(320, 180)
+
+[node name="World_Level_6" parent="LDTKWorld" instance=ExtResource("13_2cqfq")]
+position = Vector2(640, 180)
+
+[node name="World_Level_7" parent="LDTKWorld" instance=ExtResource("14_yaehf")]
+position = Vector2(960, 180)
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("character")]
 position = Vector2(160, 90)
@@ -52,7 +78,6 @@ character = NodePath("../Player")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_5vw27")
-autoplay = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 visible = false
@@ -67,4 +92,4 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Player" parent="." instance=ExtResource("8_kek77")]
-position = Vector2(162, 46)
+position = Vector2(166, 121)

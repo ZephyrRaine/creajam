@@ -1,0 +1,78 @@
+[gd_scene load_steps=11 format=3 uid="uid://c2778dp4ci2ol"]
+
+[ext_resource type="Script" uid="uid://c1rp5fi5pvthf" path="res://UltimatePlatformerController.gd" id="1_g2els"]
+[ext_resource type="Texture2D" uid="uid://dvekdb8f5oelq" path="res://sprites/player-Sheet.png" id="2_qhqgy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_272bh"]
+radius = 3.9
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
+atlas = ExtResource("2_qhqgy")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlg0r"]
+atlas = ExtResource("2_qhqgy")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tuyoq"]
+atlas = ExtResource("2_qhqgy")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjrip"]
+atlas = ExtResource("2_qhqgy")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_smehm"]
+atlas = ExtResource("2_qhqgy")
+region = Rect2(32, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ur7pv"]
+atlas = ExtResource("2_qhqgy")
+region = Rect2(40, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5vw27"]
+animations = [{
+"frames": [{
+"duration": 20.0,
+"texture": SubResource("AtlasTexture_dqkch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qlg0r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tuyoq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fjrip")
+}, {
+"duration": 10.0,
+"texture": SubResource("AtlasTexture_smehm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ur7pv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("PlayerSprite", "PlayerCollider")]
+script = ExtResource("1_g2els")
+PlayerSprite = NodePath("AnimatedSprite2D")
+PlayerCollider = NodePath("CollisionShape2D")
+maxSpeed = 100.0
+timeToReachMaxSpeed = 0.1
+timeToReachZeroSpeed = 0.1
+jumpHeight = 1.8
+jumps = 2
+gravityScale = 10.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_272bh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, 0)
+sprite_frames = SubResource("SpriteFrames_5vw27")
+autoplay = "default"
+frame_progress = 0.264962

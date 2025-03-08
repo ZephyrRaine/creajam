@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c2778dp4ci2ol"]
+[gd_scene load_steps=13 format=3 uid="uid://c2778dp4ci2ol"]
 
 [ext_resource type="Script" uid="uid://c1rp5fi5pvthf" path="res://UltimatePlatformerController.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://dvekdb8f5oelq" path="res://sprites/player-Sheet.png" id="2_qhqgy"]
@@ -30,6 +30,14 @@ region = Rect2(32, 0, 8, 8)
 atlas = ExtResource("2_qhqgy")
 region = Rect2(40, 0, 8, 8)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_g2els"]
+atlas = ExtResource("2_qhqgy")
+region = Rect2(0, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
+atlas = ExtResource("2_qhqgy")
+region = Rect2(8, 8, 8, 8)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_5vw27"]
 animations = [{
 "frames": [{
@@ -52,7 +60,18 @@ animations = [{
 "texture": SubResource("AtlasTexture_ur7pv")
 }],
 "loop": true,
-"name": &"default",
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g2els")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qhqgy")
+}],
+"loop": true,
+"name": &"walk",
 "speed": 5.0
 }]
 
@@ -74,5 +93,6 @@ shape = SubResource("CircleShape2D_272bh")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, 0)
 sprite_frames = SubResource("SpriteFrames_5vw27")
-autoplay = "default"
-frame_progress = 0.264962
+animation = &"idle"
+frame = 4
+frame_progress = 0.93568

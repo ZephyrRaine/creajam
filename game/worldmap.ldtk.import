@@ -7,10 +7,10 @@ path="res://.godot/imported/worldmap.ldtk-811e4c2128539b65929641d61eda1be7.scn"
 
 [deps]
 
-files=["res:///tilesets/tileset_8px.res", "res:///levels/World_Level_0.scn", "res://.godot/imported/worldmap.ldtk-811e4c2128539b65929641d61eda1be7.scn"]
+files=["res:///tilesets/tileset_8px.res", "res:///levels/World_Level_0.scn", "res:///levels/World_Level_1.scn", "res:///levels/World_Level_2.scn", "res://.godot/imported/worldmap.ldtk-811e4c2128539b65929641d61eda1be7.scn"]
 
 source_file="res://worldmap.ldtk"
-dest_files=["res://.godot/imported/worldmap.ldtk-811e4c2128539b65929641d61eda1be7.scn", "res:///tilesets/tileset_8px.res", "res:///levels/World_Level_0.scn", "res://.godot/imported/worldmap.ldtk-811e4c2128539b65929641d61eda1be7.scn"]
+dest_files=["res://.godot/imported/worldmap.ldtk-811e4c2128539b65929641d61eda1be7.scn", "res:///tilesets/tileset_8px.res", "res:///levels/World_Level_0.scn", "res:///levels/World_Level_1.scn", "res:///levels/World_Level_2.scn", "res://.godot/imported/worldmap.ldtk-811e4c2128539b65929641d61eda1be7.scn"]
 
 [params]
 

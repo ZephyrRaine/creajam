@@ -54,5 +54,5 @@ animations = [{
 
 [node name="AnimatedSprite2D_net" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_yaehf")
-frame_progress = 0.527947
+frame_progress = 0.380531
 speed_scale = 1.5

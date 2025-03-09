@@ -267,26 +267,6 @@ texture = ExtResource("22_ryguw")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PICK_UP_NET/Area2D"]
 shape = SubResource("CircleShape2D_ryguw")
 
-[node name="PICK_UP_NET2" type="Sprite2D" parent="."]
-position = Vector2(156, 160)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("21_getpj")
-region_enabled = true
-region_rect = Rect2(0, 0, 5, 10)
-script = ExtResource("22_d13ii")
-item_unlock = "Net"
-
-[node name="PointLight2D" type="PointLight2D" parent="PICK_UP_NET2"]
-position = Vector2(0, -1.33333)
-scale = Vector2(0.17, 0.17)
-energy = 1.11
-texture = ExtResource("22_ryguw")
-
-[node name="Area2D" type="Area2D" parent="PICK_UP_NET2"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PICK_UP_NET2/Area2D"]
-shape = SubResource("CircleShape2D_ryguw")
-
 [node name="PICK_UP_JAR" type="Sprite2D" parent="."]
 position = Vector2(500, -53)
 scale = Vector2(1.5, 1.5)
@@ -327,6 +307,5 @@ texture = ExtResource("22_ryguw")
 shape = SubResource("CircleShape2D_ryguw")
 
 [connection signal="area_entered" from="PICK_UP_NET/Area2D" to="PICK_UP_NET" method="_on_area_2d_area_entered"]
-[connection signal="area_entered" from="PICK_UP_NET2/Area2D" to="PICK_UP_NET2" method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="PICK_UP_JAR/Area2D" to="PICK_UP_JAR" method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="PICK_UP_TRAMPOLINE/Area2D" to="PICK_UP_TRAMPOLINE" method="_on_area_2d_area_entered"]

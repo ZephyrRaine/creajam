@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://j3sgnbutxq0r"]
+[gd_scene load_steps=7 format=3 uid="uid://pdwiuienlgao"]
 
 [ext_resource type="Texture2D" uid="uid://n0xot8dkm21u" path="res://sprites/Owl-Sheet.png" id="1_a0qig"]
 
@@ -42,4 +42,4 @@ animations = [{
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_0odxb")
-frame_progress = 0.301281
+autoplay = "default"

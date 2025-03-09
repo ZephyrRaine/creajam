@@ -548,19 +548,20 @@ func _jump():
 		jumpWasPressed = false
 		
 func _wallJump():
-	var horizontalWallKick = abs(jumpMagnitude * cos(wallKickAngle * (PI / 180)))
-	var verticalWallKick = abs(jumpMagnitude * sin(wallKickAngle * (PI / 180)))
-	velocity.y = -verticalWallKick
-	var dir = 1
-	if wallLatchingModifer and latchHold:
-		dir = -1
-	if wasMovingR:
-		velocity.x = -horizontalWallKick  * dir
-	else:
-		velocity.x = horizontalWallKick * dir
-	if inputPauseAfterWallJump != 0:
-		movementInputMonitoring = Vector2(false, false)
-		_inputPauseReset(inputPauseAfterWallJump)
+	if(is_on_floor()):
+		var horizontalWallKick = abs(jumpMagnitude * cos(wallKickAngle * (PI / 180)))
+		var verticalWallKick = abs(jumpMagnitude * sin(wallKickAngle * (PI / 180)))
+		velocity.y = -verticalWallKick
+		var dir = 1
+		if wallLatchingModifer and latchHold:
+			dir = -1
+		if wasMovingR:
+			velocity.x = -horizontalWallKick  * dir
+		else:
+			velocity.x = horizontalWallKick * dir
+		if inputPauseAfterWallJump != 0:
+			movementInputMonitoring = Vector2(false, false)
+			_inputPauseReset(inputPauseAfterWallJump)
 			
 func _setLatch(delay, setBool):
 	await get_tree().create_timer(delay).timeout

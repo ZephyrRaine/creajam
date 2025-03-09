@@ -6,11 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://bgx2osy2fuqec" path="res://scenes/net.tscn" id="3_qhqgy"]
 [ext_resource type="AudioStream" uid="uid://bytw44njg0sjj" path="res://audio/jumpsfx1.ogg" id="5_qlg0r"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_272bh"]
-radius = 3.9
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qlg0r"]
+size = Vector2(7, 7)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dqkch"]
-size = Vector2(3, 1)
+size = Vector2(5, 1)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("PlayerSprite", "PlayerCollider")]
 floor_max_angle = 0.0
@@ -35,7 +35,8 @@ falling = true
 trampoline_modifier = 1.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_272bh")
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_qlg0r")
 
 [node name="Objects" type="Node2D" parent="."]
 script = ExtResource("2_dqkch")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://c7dp7dx11ldnh"]
+[gd_scene load_steps=29 format=3 uid="uid://c7dp7dx11ldnh"]
 
 [ext_resource type="PackedScene" uid="uid://dcg2cy01iequ3" path="res://levels/World_Level_0.scn" id="1_1bvp3"]
 [ext_resource type="Script" uid="uid://b2hydfoglxu74" path="res://addons/ldtk-importer/src/components/ldtk-world.gd" id="1_kek77"]
@@ -6,20 +6,24 @@
 [ext_resource type="Script" uid="uid://bfgql8ewvmi1f" path="res://scripts/camera_follow.gd" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://v1k0ryhnceve" path="res://levels/World_Level_2.scn" id="7_272bh"]
 [ext_resource type="PackedScene" uid="uid://8wbtc8ax60ev" path="res://scenes/player.tscn" id="8_kek77"]
-[ext_resource type="Script" path="res://autoenable.gd" id="9_4c57u"]
+[ext_resource type="Script" uid="uid://cqavpo8qyep85" path="res://autoenable.gd" id="9_4c57u"]
 [ext_resource type="Shader" uid="uid://b2w5gup6a6mqb" path="res://crt.gdshader" id="9_kek77"]
 [ext_resource type="PackedScene" uid="uid://dhkrs1s8534gv" path="res://levels/World_Level_3.scn" id="10_4c57u"]
 [ext_resource type="PackedScene" uid="uid://deuwg4ko68ba1" path="res://levels/World_Level_4.scn" id="11_w48qg"]
 [ext_resource type="PackedScene" uid="uid://c0s4oleqq8lmc" path="res://levels/World_Level_5.scn" id="12_vivmo"]
 [ext_resource type="PackedScene" uid="uid://doqi4hrvgjr56" path="res://levels/World_Level_6.scn" id="13_2cqfq"]
 [ext_resource type="PackedScene" uid="uid://dpovyohnobfg6" path="res://levels/World_Level_7.scn" id="14_yaehf"]
-[ext_resource type="PackedScene" uid="uid://coccfr2vpel1g" path="res://scenes/firefly.tscn" id="15_vivmo"]
 [ext_resource type="PackedScene" uid="uid://dtj31al1wfuku" path="res://scenes/frog.tscn" id="16_2cqfq"]
 [ext_resource type="Texture2D" uid="uid://bfubkk4j4cjgy" path="res://sprites/jar.png" id="17_074og"]
 [ext_resource type="AudioStream" uid="uid://pn702d6f1uap" path="res://audio/bgm_mixer.tres" id="17_cegan"]
-[ext_resource type="PackedScene" uid="uid://bympt6wu1mfl6" path="res://scenes/trampoline.tscn" id="17_yaehf"]
+[ext_resource type="Script" uid="uid://o4xmctqbehsk" path="res://canvas_modulate.gd" id="19_getpj"]
+[ext_resource type="PackedScene" uid="uid://pdwiuienlgao" path="res://scenes/owl.tscn" id="20_82xsv"]
 [ext_resource type="Script" uid="uid://cl8hw6xwepmw1" path="res://AudioManager.gd" id="20_getpj"]
 [ext_resource type="Shader" uid="uid://cfx7hgufruspt" path="res://main.tres" id="20_ryguw"]
+[ext_resource type="Texture2D" uid="uid://ynouyo76ofdx" path="res://sprites/net-Sheet.png" id="21_getpj"]
+[ext_resource type="Script" uid="uid://7jne80dkq2dd" path="res://pick_up_item.gd" id="22_d13ii"]
+[ext_resource type="Texture2D" uid="uid://psmgo2eottoq" path="res://2d_lights_and_shadows_neutral_point_light.webp" id="22_ryguw"]
+[ext_resource type="Texture2D" uid="uid://bqduwtnrs4sb5" path="res://sprites/trampoline-Sheet.png" id="25_0odxb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4c57u"]
 shader = ExtResource("9_kek77")
@@ -49,6 +53,8 @@ shader_parameter/vignette_opacity = 0.6
 shader = ExtResource("20_ryguw")
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_82xsv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ryguw"]
 
 [node name="Main" type="Node2D"]
 
@@ -99,22 +105,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Player" parent="." instance=ExtResource("8_kek77")]
-position = Vector2(121, 111)
-wallJump = false
-
-[node name="Firefly" parent="." instance=ExtResource("15_vivmo")]
-position = Vector2(190, 125)
-
 [node name="Frog" parent="." instance=ExtResource("16_2cqfq")]
-position = Vector2(462, -26)
+position = Vector2(455, -74)
 
-[node name="AnimatedSprite2D_trampoline" parent="." instance=ExtResource("17_yaehf")]
-position = Vector2(150, 164)
+[node name="Owl" parent="." instance=ExtResource("20_82xsv")]
+position = Vector2(887, -61)
 
-[node name="Jar" type="Sprite2D" parent="."]
-position = Vector2(516, -28)
-texture = ExtResource("17_074og")
+[node name="Player" parent="." instance=ExtResource("8_kek77")]
+position = Vector2(123, 156)
+jumps = 1
 
 [node name="AudioManager" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_cegan")
@@ -128,7 +127,8 @@ position = Vector2(799, 272)
 texture = SubResource("CompressedTexture2D_82xsv")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.1972, 0.48688, 0.68, 1)
+color = Color(0.203, 0.5012, 0.7, 1)
+script = ExtResource("19_getpj")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 rotation = 0.349066
@@ -138,3 +138,66 @@ shadow_enabled = true
 shadow_filter = 1
 shadow_filter_smooth = 18.0
 height = 0.05
+
+[node name="PICK_UP_NET" type="Sprite2D" parent="."]
+position = Vector2(1112, 320)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("21_getpj")
+region_enabled = true
+region_rect = Rect2(0, 0, 5, 10)
+script = ExtResource("22_d13ii")
+item_unlock = "Net"
+
+[node name="PointLight2D" type="PointLight2D" parent="PICK_UP_NET"]
+position = Vector2(0, -1.33333)
+scale = Vector2(0.17, 0.17)
+energy = 1.11
+texture = ExtResource("22_ryguw")
+
+[node name="Area2D" type="Area2D" parent="PICK_UP_NET"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PICK_UP_NET/Area2D"]
+shape = SubResource("CircleShape2D_ryguw")
+
+[node name="PICK_UP_JAR" type="Sprite2D" parent="."]
+position = Vector2(500, -53)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("17_074og")
+region_rect = Rect2(0, 0, 5, 10)
+script = ExtResource("22_d13ii")
+item_unlock = "Jar"
+
+[node name="PointLight2D" type="PointLight2D" parent="PICK_UP_JAR"]
+position = Vector2(0, -1.33333)
+scale = Vector2(0.17, 0.17)
+energy = 1.11
+texture = ExtResource("22_ryguw")
+
+[node name="Area2D" type="Area2D" parent="PICK_UP_JAR"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PICK_UP_JAR/Area2D"]
+shape = SubResource("CircleShape2D_ryguw")
+
+[node name="PICK_UP_TRAMPOLINE" type="Sprite2D" parent="."]
+position = Vector2(857, -40)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("25_0odxb")
+region_enabled = true
+region_rect = Rect2(0, 0, 8, 8)
+script = ExtResource("22_d13ii")
+item_unlock = "Trampoline"
+
+[node name="PointLight2D" type="PointLight2D" parent="PICK_UP_TRAMPOLINE"]
+position = Vector2(0, -1.33333)
+scale = Vector2(0.17, 0.17)
+energy = 1.11
+texture = ExtResource("22_ryguw")
+
+[node name="Area2D" type="Area2D" parent="PICK_UP_TRAMPOLINE"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PICK_UP_TRAMPOLINE/Area2D"]
+shape = SubResource("CircleShape2D_ryguw")
+
+[connection signal="area_entered" from="PICK_UP_NET/Area2D" to="PICK_UP_NET" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="PICK_UP_JAR/Area2D" to="PICK_UP_JAR" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="PICK_UP_TRAMPOLINE/Area2D" to="PICK_UP_TRAMPOLINE" method="_on_area_2d_area_entered"]

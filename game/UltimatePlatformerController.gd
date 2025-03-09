@@ -108,6 +108,7 @@ var utils = preload("res://scripts/utils.gd")
 ##Animations must be named "roll" all lowercase as the check box says
 @export var roll: bool
 
+@export var trampoline_modifier : float
 
 #Variables determined by the developer set ones.
 var appliedGravity: float
@@ -174,6 +175,8 @@ var twirlTap
 
 var _tilesRef : LDTKWorld
 var previous_floor_position : Vector2
+
+var on_trampoline : bool
 
 func _ready():
 	_tilesRef = $"../LDTKWorld"
@@ -497,7 +500,8 @@ func _physics_process(delta):
 		if is_on_floor():
 			jumpCount = jumps
 		if jumpTap and jumpCount > 0 and !is_on_wall():
-			velocity.y = -jumpMagnitude
+			print("on_trampoline : " + str(on_trampoline) + " - trampoline_modifier : " + str(trampoline_modifier))
+			velocity.y = -jumpMagnitude * (trampoline_modifier if on_trampoline else 1.0)
 			jumpCount = jumpCount - 1
 			_endGroundPound()
 		elif jumpTap and is_on_wall() and wallJump:
@@ -538,7 +542,8 @@ func _coyoteTime():
 	
 func _jump():
 	if jumpCount > 0:
-		velocity.y = -jumpMagnitude
+		print(on_trampoline)
+		velocity.y = -jumpMagnitude * (trampoline_modifier if on_trampoline else 1.0)
 		jumpCount += -1
 		jumpWasPressed = false
 		

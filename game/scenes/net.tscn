@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://bgx2osy2fuqec"]
+[gd_scene load_steps=11 format=3 uid="uid://bgx2osy2fuqec"]
 
 [ext_resource type="Texture2D" uid="uid://ynouyo76ofdx" path="res://sprites/net-Sheet.png" id="1_es2g2"]
+[ext_resource type="Script" uid="uid://bvl2b7vcmg0bj" path="res://scenes/UsableObject.gd" id="2_i41qj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i41qj"]
 atlas = ExtResource("1_es2g2")
@@ -52,7 +53,19 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i41qj"]
+size = Vector2(8, 8)
+
 [node name="AnimatedSprite2D_net" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_yaehf")
 animation = &"use"
 speed_scale = 1.5
+script = ExtResource("2_i41qj")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(4, 1)
+shape = SubResource("RectangleShape2D_i41qj")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

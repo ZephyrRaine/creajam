@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://8wbtc8ax60ev"]
+[gd_scene load_steps=7 format=3 uid="uid://8wbtc8ax60ev"]
 
 [ext_resource type="Script" uid="uid://c1rp5fi5pvthf" path="res://UltimatePlatformerController.gd" id="1_g2els"]
 [ext_resource type="Script" uid="uid://ij3l0fnsl2va" path="res://scenes/objectmanager.gd" id="2_dqkch"]
@@ -8,48 +8,27 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_272bh"]
 radius = 3.9
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dqkch"]
+size = Vector2(3, 1)
+
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("PlayerSprite", "PlayerCollider")]
 script = ExtResource("1_g2els")
-README = null
 PlayerSprite = NodePath("AnimatedSprite2D")
 PlayerCollider = NodePath("CollisionShape2D")
 maxSpeed = 50.0
 timeToReachMaxSpeed = 0.1
 timeToReachZeroSpeed = 0.1
-directionalSnap = null
-runningModifier = null
 jumpHeight = 1.8
 jumps = 2
 gravityScale = 10.0
-terminalVelocity = null
-descendingGravityFactor = null
 shortHopAkaVariableJumpHeight = false
-coyoteTime = null
-jumpBuffering = null
-wallJump = null
-inputPauseAfterWallJump = null
-wallKickAngle = null
-wallSliding = null
-wallLatching = null
-wallLatchingModifer = null
-cornerCutting = null
-correctionAmount = null
-crouch = null
-canRoll = null
-rollLength = null
-groundPound = null
-groundPoundPause = null
-upToCancel = null
+wallJump = true
 run = true
 jump = true
 idle = true
 walk = true
-slide = null
-latch = null
 falling = true
-crouch_idle = null
-crouch_walk = null
-roll = null
+trampoline_modifier = 1.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_272bh")
@@ -63,3 +42,9 @@ position = Vector2(5, -1)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_g2els")
 animation = &"idle"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, 3.5)
+shape = SubResource("RectangleShape2D_dqkch")

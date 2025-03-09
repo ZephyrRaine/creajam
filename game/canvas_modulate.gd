@@ -9,4 +9,4 @@ func _process(delta: float) -> void:
 	if($"../Player".position.y > 180):
 		color.v = 0.1
 	else:
-		color.v = 0.27
+		color.v = 0.7

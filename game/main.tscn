@@ -235,7 +235,7 @@ position = Vector2(799, 272)
 texture = SubResource("CompressedTexture2D_82xsv")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.203, 0.5012, 0.7, 1)
+color = Color(0.29, 0.716, 1, 1)
 script = ExtResource("19_getpj")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]

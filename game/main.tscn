@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c7dp7dx11ldnh"]
+[gd_scene load_steps=24 format=3 uid="uid://c7dp7dx11ldnh"]
 
 [ext_resource type="PackedScene" uid="uid://dcg2cy01iequ3" path="res://levels/World_Level_0.scn" id="1_1bvp3"]
 [ext_resource type="Script" uid="uid://b2hydfoglxu74" path="res://addons/ldtk-importer/src/components/ldtk-world.gd" id="1_kek77"]
@@ -18,8 +18,8 @@
 [ext_resource type="Texture2D" uid="uid://bfubkk4j4cjgy" path="res://sprites/jar.png" id="17_074og"]
 [ext_resource type="AudioStream" uid="uid://pn702d6f1uap" path="res://audio/bgm_mixer.tres" id="17_cegan"]
 [ext_resource type="PackedScene" uid="uid://bympt6wu1mfl6" path="res://scenes/trampoline.tscn" id="17_yaehf"]
-[ext_resource type="Texture2D" uid="uid://08qvsjedpvw6" path="res://audio/cover.png" id="20_82xsv"]
 [ext_resource type="Script" uid="uid://cl8hw6xwepmw1" path="res://AudioManager.gd" id="20_getpj"]
+[ext_resource type="Shader" uid="uid://cfx7hgufruspt" path="res://main.tres" id="20_ryguw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4c57u"]
 shader = ExtResource("9_kek77")
@@ -44,6 +44,11 @@ shader_parameter/warp_amount = 0.0
 shader_parameter/clip_warp = false
 shader_parameter/vignette_intensity = 0.4
 shader_parameter/vignette_opacity = 0.6
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d13ii"]
+shader = ExtResource("20_ryguw")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_82xsv"]
 
 [node name="Main" type="Node2D"]
 
@@ -95,7 +100,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Player" parent="." instance=ExtResource("8_kek77")]
-position = Vector2(186, 151)
+position = Vector2(121, 111)
 wallJump = false
 
 [node name="Firefly" parent="." instance=ExtResource("15_vivmo")]
@@ -117,5 +122,16 @@ autoplay = true
 script = ExtResource("20_getpj")
 
 [node name="Cover" type="Sprite2D" parent="."]
-position = Vector2(800, 271)
-texture = ExtResource("20_82xsv")
+visible = false
+material = SubResource("ShaderMaterial_d13ii")
+position = Vector2(799, 272)
+texture = SubResource("CompressedTexture2D_82xsv")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.141176, 0.203922, 0.298039, 1)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+rotation = 0.197222
+energy = 1.26
+shadow_enabled = true
+height = 0.05

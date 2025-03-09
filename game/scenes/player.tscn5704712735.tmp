@@ -13,7 +13,6 @@ radius = 3.9
 size = Vector2(3, 1)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("PlayerSprite", "PlayerCollider")]
-floor_max_angle = 0.0
 script = ExtResource("1_g2els")
 PlayerSprite = NodePath("AnimatedSprite2D")
 PlayerCollider = NodePath("CollisionShape2D")
@@ -25,8 +24,6 @@ jumps = 2
 gravityScale = 10.0
 shortHopAkaVariableJumpHeight = false
 wallJump = true
-inputPauseAfterWallJump = 0.0
-wallKickAngle = 0.0
 run = true
 jump = true
 idle = true

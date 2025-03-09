@@ -17,9 +17,16 @@ static func getCenterWordlTile(global:Vector2) -> Vector2:
 	position.x = tilePos.x*width + width * 0.5 
 	position.y = tilePos.y*height + height * 0.5
 	return position
-
-static func getTileMap(levels:Array[Node], pos:Vector2) -> TileMapLayer:
+	
+static func getLevel(levels:Array[Node], pos:Vector2) -> LDTKLevel:
 	for level in levels:
 		if (level.position.x < pos.x and level.position.y < pos.y and level.position.x + width > pos.x and level.position.y + height > pos.y):
-			return level.find_child("GridColinFlo")
+			return level
+	return null
+	
+
+static func getTileMap(levels:Array[Node], pos:Vector2) -> TileMapLayer:
+	var level = getLevel(levels,pos)
+	if(level):
+		return level.find_child("GridColinFlo")
 	return null

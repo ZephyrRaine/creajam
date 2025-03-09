@@ -1,0 +1,21 @@
+[gd_resource type="AudioStreamInteractive" load_steps=5 format=3 uid="uid://pn702d6f1uap"]
+
+[ext_resource type="AudioStream" uid="uid://7b7tqnqlyrgj" path="res://audio/calm1.ogg" id="1_dm6ma"]
+[ext_resource type="AudioStream" uid="uid://bs3uiaktx10n4" path="res://audio/calm2.ogg" id="2_mowng"]
+[ext_resource type="AudioStream" uid="uid://ctixl1p1pujm2" path="res://audio/spooky.ogg" id="3_4eupj"]
+[ext_resource type="AudioStream" uid="uid://cm1krcvbuidbu" path="res://audio/alien1.ogg" id="4_mowng"]
+
+[resource]
+clip_count = 4
+clip_0/name = &"Calm 1"
+clip_0/stream = ExtResource("1_dm6ma")
+clip_0/auto_advance = 0
+clip_1/name = &"Calm 2"
+clip_1/stream = ExtResource("2_mowng")
+clip_1/auto_advance = 0
+clip_2/name = &"Spooky"
+clip_2/stream = ExtResource("3_4eupj")
+clip_2/auto_advance = 0
+clip_3/name = &"Alien 1"
+clip_3/stream = ExtResource("4_mowng")
+clip_3/auto_advance = 0

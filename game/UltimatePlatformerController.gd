@@ -500,7 +500,7 @@ func _physics_process(delta):
 		if is_on_floor():
 			jumpCount = jumps
 		if jumpTap and jumpCount > 0 and !is_on_wall():
-			print("on_trampoline : " + str(on_trampoline) + " - trampoline_modifier : " + str(trampoline_modifier))
+			$Jump.play()
 			velocity.y = -jumpMagnitude * (trampoline_modifier if on_trampoline else 1.0)
 			jumpCount = jumpCount - 1
 			_endGroundPound()
@@ -542,7 +542,7 @@ func _coyoteTime():
 	
 func _jump():
 	if jumpCount > 0:
-		print(on_trampoline)
+		$Jump.play()
 		velocity.y = -jumpMagnitude * (trampoline_modifier if on_trampoline else 1.0)
 		jumpCount += -1
 		jumpWasPressed = false

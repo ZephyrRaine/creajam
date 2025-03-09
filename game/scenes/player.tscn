@@ -49,6 +49,7 @@ animations = [{
 size = Vector2(5, 1)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("PlayerSprite", "PlayerCollider")]
+z_index = 1
 floor_max_angle = 0.0
 script = ExtResource("1_g2els")
 PlayerSprite = NodePath("AnimatedSprite2D")

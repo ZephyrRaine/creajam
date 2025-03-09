@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://djvqcb3g0os1s"]
+
+[ext_resource type="Texture2D" uid="uid://bfubkk4j4cjgy" path="res://sprites/jar.png" id="1_xlc2a"]
+[ext_resource type="Texture2D" uid="uid://dbickl5j0icel" path="res://sprites/Firefly-Sheet.png" id="2_rk05e"]
+[ext_resource type="Texture2D" uid="uid://psmgo2eottoq" path="res://2d_lights_and_shadows_neutral_point_light.webp" id="3_6eggo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rwtl0"]
+atlas = ExtResource("2_rk05e")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vwwlv"]
+atlas = ExtResource("2_rk05e")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lk4qt"]
+atlas = ExtResource("2_rk05e")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kyjek"]
+atlas = ExtResource("2_rk05e")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a6jrf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rwtl0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vwwlv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lk4qt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kyjek")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Jar_Collection" type="Sprite2D"]
+texture = ExtResource("1_xlc2a")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 1)
+sprite_frames = SubResource("SpriteFrames_a6jrf")
+autoplay = "default"
+speed_scale = 2.0
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0.5, 0.5)
+scale = Vector2(0.2, 0.2)
+color = Color(0.980392, 0.780392, 0.478431, 1)
+energy = 0.5
+shadow_enabled = true
+texture = ExtResource("3_6eggo")

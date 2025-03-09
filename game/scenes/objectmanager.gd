@@ -9,7 +9,7 @@ func _ready() -> void:
 	cur_object = null
 
 func _process(delta: float) -> void:
-	if(Input.is_action_just_pressed("use")):
+	if(cur_object and Input.is_action_just_pressed("use")):
 		cur_object.use()
 		
 	if(Input.is_action_just_pressed("next_item")):

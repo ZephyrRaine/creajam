@@ -56,7 +56,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i41qj"]
-size = Vector2(8, 8)
+size = Vector2(9, 9)
 
 [node name="AnimatedSprite2D_net" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_yaehf")
@@ -67,7 +67,7 @@ script = ExtResource("2_i41qj")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(4, 1)
+position = Vector2(4.5, -0.5)
 shape = SubResource("RectangleShape2D_i41qj")
 
 [node name="Filet" type="AudioStreamPlayer2D" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://c7dp7dx11ldnh"]
+[gd_scene load_steps=32 format=3 uid="uid://c7dp7dx11ldnh"]
 
 [ext_resource type="PackedScene" uid="uid://dcg2cy01iequ3" path="res://levels/World_Level_0.scn" id="1_1bvp3"]
 [ext_resource type="Script" uid="uid://b2hydfoglxu74" path="res://addons/ldtk-importer/src/components/ldtk-world.gd" id="1_kek77"]
@@ -9,7 +9,9 @@
 [ext_resource type="Script" uid="uid://cqavpo8qyep85" path="res://autoenable.gd" id="9_4c57u"]
 [ext_resource type="Shader" uid="uid://b2w5gup6a6mqb" path="res://crt.gdshader" id="9_kek77"]
 [ext_resource type="PackedScene" uid="uid://dhkrs1s8534gv" path="res://levels/World_Level_3.scn" id="10_4c57u"]
+[ext_resource type="Script" uid="uid://dpf2sq2tvpg7b" path="res://jar_collection.gd" id="10_lswn8"]
 [ext_resource type="PackedScene" uid="uid://deuwg4ko68ba1" path="res://levels/World_Level_4.scn" id="11_w48qg"]
+[ext_resource type="PackedScene" uid="uid://kna7r23etv2c" path="res://scenes/rat.tscn" id="12_a6jrf"]
 [ext_resource type="PackedScene" uid="uid://c0s4oleqq8lmc" path="res://levels/World_Level_5.scn" id="12_vivmo"]
 [ext_resource type="PackedScene" uid="uid://doqi4hrvgjr56" path="res://levels/World_Level_6.scn" id="13_2cqfq"]
 [ext_resource type="PackedScene" uid="uid://dpovyohnobfg6" path="res://levels/World_Level_7.scn" id="14_yaehf"]
@@ -24,6 +26,7 @@
 [ext_resource type="Script" uid="uid://7jne80dkq2dd" path="res://pick_up_item.gd" id="22_d13ii"]
 [ext_resource type="Texture2D" uid="uid://psmgo2eottoq" path="res://2d_lights_and_shadows_neutral_point_light.webp" id="22_ryguw"]
 [ext_resource type="Texture2D" uid="uid://bqduwtnrs4sb5" path="res://sprites/trampoline-Sheet.png" id="25_0odxb"]
+[ext_resource type="PackedScene" uid="uid://djvqcb3g0os1s" path="res://scenes/jar_collection.tscn" id="25_lswn8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4c57u"]
 shader = ExtResource("9_kek77")
@@ -86,6 +89,102 @@ position = Vector2(640, 180)
 [node name="World_Level_7" parent="LDTKWorld" instance=ExtResource("14_yaehf")]
 position = Vector2(960, 180)
 
+[node name="JAR_COLLECTION" type="Node" parent="."]
+script = ExtResource("10_lswn8")
+
+[node name="Jar_Collection" parent="JAR_COLLECTION" instance=ExtResource("25_lswn8")]
+position = Vector2(124, 148)
+
+[node name="Jar_Collection2" parent="JAR_COLLECTION" instance=ExtResource("25_lswn8")]
+position = Vector2(132, 148)
+
+[node name="Jar_Collection3" parent="JAR_COLLECTION" instance=ExtResource("25_lswn8")]
+position = Vector2(140, 148)
+
+[node name="Jar_Collection5" parent="JAR_COLLECTION" instance=ExtResource("25_lswn8")]
+position = Vector2(180, 148)
+
+[node name="Jar_Collection6" parent="JAR_COLLECTION" instance=ExtResource("25_lswn8")]
+position = Vector2(188, 148)
+
+[node name="Jar_Collection7" parent="JAR_COLLECTION" instance=ExtResource("25_lswn8")]
+position = Vector2(196, 148)
+
+[node name="Jar_Collection9" parent="JAR_COLLECTION" instance=ExtResource("25_lswn8")]
+position = Vector2(180, 132)
+
+[node name="Jar_Collection10" parent="JAR_COLLECTION" instance=ExtResource("25_lswn8")]
+position = Vector2(188, 132)
+
+[node name="Jar_Collection11" parent="JAR_COLLECTION" instance=ExtResource("25_lswn8")]
+position = Vector2(196, 132)
+
+[node name="Jar_Collection16" parent="JAR_COLLECTION" instance=ExtResource("25_lswn8")]
+position = Vector2(124, 132)
+
+[node name="Jar_Collection17" parent="JAR_COLLECTION" instance=ExtResource("25_lswn8")]
+position = Vector2(132, 132)
+
+[node name="Jar_Collection18" parent="JAR_COLLECTION" instance=ExtResource("25_lswn8")]
+position = Vector2(140, 132)
+
+[node name="Jar_Collection12" parent="JAR_COLLECTION" instance=ExtResource("25_lswn8")]
+position = Vector2(140, 116)
+
+[node name="Jar_Collection13" parent="JAR_COLLECTION" instance=ExtResource("25_lswn8")]
+position = Vector2(196, 116)
+
+[node name="Jar_Collection14" parent="JAR_COLLECTION" instance=ExtResource("25_lswn8")]
+position = Vector2(124, 116)
+
+[node name="Jar_Collection15" parent="JAR_COLLECTION" instance=ExtResource("25_lswn8")]
+position = Vector2(132, 116)
+
+[node name="Jar_Collection4" parent="JAR_COLLECTION" instance=ExtResource("25_lswn8")]
+position = Vector2(122, 164)
+
+[node name="Jar_Collection8" parent="JAR_COLLECTION" instance=ExtResource("25_lswn8")]
+position = Vector2(189, 164)
+
+[node name="Jar_Collection19" parent="JAR_COLLECTION" instance=ExtResource("25_lswn8")]
+position = Vector2(189, 159)
+
+[node name="Jar_Collection28" parent="JAR_COLLECTION" instance=ExtResource("25_lswn8")]
+position = Vector2(183, 164)
+
+[node name="Jar_Collection29" parent="JAR_COLLECTION" instance=ExtResource("25_lswn8")]
+position = Vector2(183, 159)
+
+[node name="Jar_Collection30" parent="JAR_COLLECTION" instance=ExtResource("25_lswn8")]
+position = Vector2(194, 164)
+
+[node name="Jar_Collection31" parent="JAR_COLLECTION" instance=ExtResource("25_lswn8")]
+position = Vector2(194, 159)
+
+[node name="Jar_Collection20" parent="JAR_COLLECTION" instance=ExtResource("25_lswn8")]
+position = Vector2(122, 159)
+
+[node name="Jar_Collection21" parent="JAR_COLLECTION" instance=ExtResource("25_lswn8")]
+position = Vector2(116, 164)
+
+[node name="Jar_Collection22" parent="JAR_COLLECTION" instance=ExtResource("25_lswn8")]
+position = Vector2(116, 159)
+
+[node name="Jar_Collection23" parent="JAR_COLLECTION" instance=ExtResource("25_lswn8")]
+position = Vector2(110, 159)
+
+[node name="Jar_Collection24" parent="JAR_COLLECTION" instance=ExtResource("25_lswn8")]
+position = Vector2(110, 164)
+
+[node name="Jar_Collection25" parent="JAR_COLLECTION" instance=ExtResource("25_lswn8")]
+position = Vector2(110, 155)
+
+[node name="Jar_Collection26" parent="JAR_COLLECTION" instance=ExtResource("25_lswn8")]
+position = Vector2(110, 151)
+
+[node name="Jar_Collection27" parent="JAR_COLLECTION" instance=ExtResource("25_lswn8")]
+position = Vector2(120, 155)
+
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("character")]
 position = Vector2(160, 90)
 zoom = Vector2(6, 6)
@@ -105,6 +204,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Rat" parent="." instance=ExtResource("12_a6jrf")]
+position = Vector2(1175, 308)
+
+[node name="PointLight2D" type="PointLight2D" parent="Rat"]
+position = Vector2(0, -32)
+scale = Vector2(0.6, 0.6)
+energy = 0.6
+texture = ExtResource("22_ryguw")
+
 [node name="Frog" parent="." instance=ExtResource("16_2cqfq")]
 position = Vector2(455, -74)
 
@@ -112,7 +220,7 @@ position = Vector2(455, -74)
 position = Vector2(887, -61)
 
 [node name="Player" parent="." instance=ExtResource("8_kek77")]
-position = Vector2(123, 156)
+position = Vector2(135, 164)
 jumps = 1
 
 [node name="AudioManager" type="AudioStreamPlayer" parent="."]
@@ -159,6 +267,26 @@ texture = ExtResource("22_ryguw")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PICK_UP_NET/Area2D"]
 shape = SubResource("CircleShape2D_ryguw")
 
+[node name="PICK_UP_NET2" type="Sprite2D" parent="."]
+position = Vector2(156, 160)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("21_getpj")
+region_enabled = true
+region_rect = Rect2(0, 0, 5, 10)
+script = ExtResource("22_d13ii")
+item_unlock = "Net"
+
+[node name="PointLight2D" type="PointLight2D" parent="PICK_UP_NET2"]
+position = Vector2(0, -1.33333)
+scale = Vector2(0.17, 0.17)
+energy = 1.11
+texture = ExtResource("22_ryguw")
+
+[node name="Area2D" type="Area2D" parent="PICK_UP_NET2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PICK_UP_NET2/Area2D"]
+shape = SubResource("CircleShape2D_ryguw")
+
 [node name="PICK_UP_JAR" type="Sprite2D" parent="."]
 position = Vector2(500, -53)
 scale = Vector2(1.5, 1.5)
@@ -199,5 +327,6 @@ texture = ExtResource("22_ryguw")
 shape = SubResource("CircleShape2D_ryguw")
 
 [connection signal="area_entered" from="PICK_UP_NET/Area2D" to="PICK_UP_NET" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="PICK_UP_NET2/Area2D" to="PICK_UP_NET2" method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="PICK_UP_JAR/Area2D" to="PICK_UP_JAR" method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="PICK_UP_TRAMPOLINE/Area2D" to="PICK_UP_TRAMPOLINE" method="_on_area_2d_area_entered"]

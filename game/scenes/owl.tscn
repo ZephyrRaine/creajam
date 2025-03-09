@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://j3sgnbutxq0r"]
+
+[ext_resource type="Texture2D" uid="uid://n0xot8dkm21u" path="res://sprites/Owl-Sheet.png" id="1_a0qig"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ryguw"]
+atlas = ExtResource("1_a0qig")
+region = Rect2(56, 0, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d13ii"]
+atlas = ExtResource("1_a0qig")
+region = Rect2(0, 0, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1u8w0"]
+atlas = ExtResource("1_a0qig")
+region = Rect2(56, 0, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ri17u"]
+atlas = ExtResource("1_a0qig")
+region = Rect2(0, 0, 56, 56)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0odxb"]
+animations = [{
+"frames": [{
+"duration": 30.0,
+"texture": SubResource("AtlasTexture_ryguw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d13ii")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1u8w0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ri17u")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Owl" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_0odxb")
+frame_progress = 0.301281

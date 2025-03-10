@@ -220,7 +220,7 @@ position = Vector2(455, -74)
 position = Vector2(887, -61)
 
 [node name="Player" parent="." instance=ExtResource("8_kek77")]
-position = Vector2(826, -68)
+position = Vector2(154, 148)
 jumps = 1
 
 [node name="AudioManager" type="AudioStreamPlayer" parent="."]
